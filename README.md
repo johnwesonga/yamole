@@ -1,4 +1,4 @@
 yamole
 ======
 
-read yaml file
+read yaml file using Go
