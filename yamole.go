@@ -11,16 +11,17 @@ type Config struct {
 	Password string
 }
 
+var c Config
+
 func main() {
-	var c Config
-	data, err := ioutil.ReadFile("config.yaml")
+	file, err := ioutil.ReadFile("config.yaml")
 	if err != nil {
 		panic(err)
 	}
-	err = goyaml.Unmarshal([]byte(data), &c)
-	if err != nil {
+	if err := goyaml.Unmarshal([]byte(file), &c); err != nil {
 		panic(err)
 	}
+
 	fmt.Printf("--- t:\n%v\n\n", c)
 
 	d, err := goyaml.Marshal(&c)
